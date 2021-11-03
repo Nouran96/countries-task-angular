@@ -9,6 +9,7 @@ import { AuthData } from 'src/app/models/auth.model';
 })
 export class AuthFormComponent implements OnInit {
   @Input() title: string = '';
+  @Input() type: 'login' | 'register' | '' = '';
   @Output() formSubmitted = new EventEmitter<AuthData>();
 
   authForm: FormGroup = new FormGroup({
@@ -16,7 +17,10 @@ export class AuthFormComponent implements OnInit {
       Validators.required,
       Validators.pattern('^\\w+([.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$'),
     ]),
-    password: new FormControl('', [Validators.required]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+    ]),
   });
 
   constructor() {}

@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { AuthData } from 'src/app/models/auth.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { loginDataRecieve } from 'src/app/store/actions/auth.actions';
+import { toggleSnackbar } from 'src/app/store/actions/shared.actions';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,10 @@ export class LoginComponent implements OnInit {
     this.authService.loginUser(data).subscribe((data) => {
       if (!data.error) {
         this.store.dispatch(loginDataRecieve(data));
+      } else {
+        this.store.dispatch(
+          toggleSnackbar({ open: true, message: data.message })
+        );
       }
     });
   }

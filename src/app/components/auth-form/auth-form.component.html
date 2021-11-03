@@ -34,6 +34,15 @@
         "
         >Required</mat-hint
       >
+
+      <mat-hint
+        class="error"
+        *ngIf="
+          isFieldInvalid('password') &&
+          authFormControls.password.errors?.minlength
+        "
+        >Password should be 6 characters or more</mat-hint
+      >
     </mat-form-field>
 
     <button
@@ -44,5 +53,12 @@
     >
       {{ title }}
     </button>
+
+    <a *ngIf="type === 'register'" class="redirectLink" routerLink="/login"
+      >Already have an account? Login</a
+    >
+    <a *ngIf="type === 'login'" class="redirectLink" routerLink="/register"
+      >Don't have an account? Register</a
+    >
   </form>
 </div>
