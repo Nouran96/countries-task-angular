@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   onLogin(data: AuthData): void {
     this.authService.loginUser(data).subscribe((data) => {
       if (!data.error) {
-        this.store.dispatch(loginDataRecieve(data));
+        this.store.dispatch(loginDataRecieve(data.data));
       } else {
         this.store.dispatch(
           toggleSnackbar({ open: true, message: data.message })
