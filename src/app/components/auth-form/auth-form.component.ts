@@ -1,10 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  AbstractControl,
-} from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthData } from 'src/app/models/auth.model';
 import { passwordsMismatch } from 'src/app/utils/Shared';
 

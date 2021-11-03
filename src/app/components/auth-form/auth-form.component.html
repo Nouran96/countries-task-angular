@@ -74,7 +74,7 @@
       [disabled]="!authForm.valid"
       type="submit"
     >
-      {{ title }}
+      <span>{{ title }} </span>
     </button>
 
     <a *ngIf="type === 'register'" class="redirectLink" routerLink="/login"
