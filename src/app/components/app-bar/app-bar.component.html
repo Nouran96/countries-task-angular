@@ -1,0 +1,34 @@
+<ng-container [ngTemplateOutlet]="childTemplate">
+  <mat-toolbar class="toolbar">
+    <nav>
+      <span routerLink="/">Home</span>
+    </nav>
+
+    <div class="authState">
+      <button
+        *ngIf="!token"
+        mat-raised-button
+        color="accent"
+        routerLink="/login"
+      >
+        Login
+      </button>
+      <button
+        *ngIf="!token"
+        mat-raised-button
+        color="accent"
+        routerLink="/register"
+      >
+        Register
+      </button>
+      <button
+        *ngIf="token"
+        mat-raised-button
+        color="accent"
+        (click)="onLogout()"
+      >
+        Logout
+      </button>
+    </div>
+  </mat-toolbar>
+</ng-container>

@@ -1,3 +1,7 @@
-<router-outlet></router-outlet>
+<ng-template #childTemplate>
+  <router-outlet></router-outlet>
 
-<app-snackbar></app-snackbar>
+  <app-snackbar></app-snackbar>
+</ng-template>
+
+<app-app-bar [childTemplate]="childTemplate"></app-app-bar>

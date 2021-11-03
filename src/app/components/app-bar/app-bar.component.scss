@@ -1,0 +1,23 @@
+.toolbar {
+  background-color: #222;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  nav span {
+    font-size: 0.9rem;
+    cursor: pointer;
+
+    &:hover {
+      color: #ff4081;
+    }
+  }
+
+  .authState {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+}

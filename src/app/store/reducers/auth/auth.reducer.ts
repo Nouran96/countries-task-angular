@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { loginDataRecieve } from 'src/app/store/actions/auth.actions';
+import { loginDataRecieve, logout } from 'src/app/store/actions/auth.actions';
 import { LoginData } from 'src/app/models/auth.model';
 
 export const getCookie = (c_name: string) => {
@@ -28,5 +28,12 @@ export const authReducer = createReducer(
     document.cookie = authCookie;
 
     return { token };
+  }),
+  on(logout, (state) => {
+    // Set a cookie that expires when session finishes
+    const authCookie = `token=;`;
+    document.cookie = authCookie;
+
+    return { token: null };
   })
 );

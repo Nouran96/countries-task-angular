@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
+  Router,
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
@@ -12,6 +13,8 @@ import { getCookie } from '../store/reducers/auth/auth.reducer';
   providedIn: 'root',
 })
 export class NotAuthGuard implements CanActivate {
+  constructor(private router: Router) {}
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -21,6 +24,7 @@ export class NotAuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     if (getCookie('token')) {
+      this.router.navigate(['/']);
       return false;
     }
 

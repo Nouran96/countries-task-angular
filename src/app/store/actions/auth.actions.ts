@@ -5,3 +5,5 @@ export const loginDataRecieve = createAction(
   '[Auth] Login Data Recieve',
   props<LoginData>()
 );
+
+export const logout = createAction('[Auth] Logout');

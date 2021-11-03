@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +19,8 @@ import { AuthFormComponent } from './components/auth-form/auth-form.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { environment } from '../environments/environment';
+import { AppBarComponent } from './components/app-bar/app-bar.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,8 @@ import { environment } from '../environments/environment';
     AuthFormComponent,
     RegisterComponent,
     SnackbarComponent,
+    AppBarComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +42,7 @@ import { environment } from '../environments/environment';
     MatInputModule,
     MatButtonModule,
     MatSnackBarModule,
+    MatToolbarModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
