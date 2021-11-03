@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { AuthData } from 'src/app/models/auth.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { Store } from '@ngrx/store';

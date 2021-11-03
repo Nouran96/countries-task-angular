@@ -13,14 +13,14 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
 import { reducers } from './store/reducers';
 import { AuthFormComponent } from './components/auth-form/auth-form.component';
-import { RegisterComponent } from './components/register/register.component';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { environment } from '../environments/environment';
 import { AppBarComponent } from './components/app-bar/app-bar.component';
-import { HomeComponent } from './components/home/home.component';
+import { RegisterComponent } from './containers/register/register.component';
+import { LoginComponent } from './containers/login/login.component';
+import { HomeComponent } from './containers/home/home.component';
 
 @NgModule({
   declarations: [

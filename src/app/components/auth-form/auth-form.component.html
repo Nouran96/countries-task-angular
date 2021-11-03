@@ -45,6 +45,29 @@
       >
     </mat-form-field>
 
+    <mat-form-field *ngIf="type === 'register'" appearance="outline">
+      <mat-label>Confirm Password</mat-label>
+      <input matInput type="password" formControlName="confirmPassword" />
+
+      <mat-hint
+        class="error"
+        *ngIf="
+          isFieldInvalid('confirmPassword') &&
+          authFormControls.confirmPassword.errors?.required
+        "
+        >Required</mat-hint
+      >
+
+      <mat-hint
+        class="error"
+        *ngIf="
+          !authFormControls.confirmPassword.errors &&
+          authForm.errors?.passwordsMismatch
+        "
+        >Passwords should match</mat-hint
+      >
+    </mat-form-field>
+
     <button
       mat-raised-button
       color="accent"

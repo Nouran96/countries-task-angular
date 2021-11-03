@@ -1,6 +1,12 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  AbstractControl,
+} from '@angular/forms';
 import { AuthData } from 'src/app/models/auth.model';
+import { passwordsMismatch } from 'src/app/utils/Shared';
 
 @Component({
   selector: 'app-auth-form',
@@ -9,23 +15,39 @@ import { AuthData } from 'src/app/models/auth.model';
 })
 export class AuthFormComponent implements OnInit {
   @Input() title: string = '';
-  @Input() type: 'login' | 'register' | '' = '';
+  @Input() type: 'login' | 'register';
   @Output() formSubmitted = new EventEmitter<AuthData>();
 
-  authForm: FormGroup = new FormGroup({
-    email: new FormControl('', [
-      Validators.required,
-      Validators.pattern('^\\w+([.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$'),
-    ]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(6),
-    ]),
-  });
+  authForm: FormGroup;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authForm = new FormGroup(
+      {
+        email: new FormControl('', [
+          Validators.required,
+          Validators.pattern(
+            '^\\w+([.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$'
+          ),
+        ]),
+        password: new FormControl('', [
+          Validators.required,
+          Validators.minLength(6),
+        ]),
+        ...(this.type === 'login'
+          ? {}
+          : {
+              confirmPassword: new FormControl('', [Validators.required]),
+            }),
+      },
+      {
+        ...(this.type === 'register'
+          ? { validators: [passwordsMismatch] }
+          : {}),
+      }
+    );
+  }
 
   get authFormControls() {
     return this.authForm.controls;
@@ -39,6 +61,9 @@ export class AuthFormComponent implements OnInit {
   }
 
   handleSubmit(): void {
-    this.formSubmitted.emit(this.authForm.value);
+    this.formSubmitted.emit({
+      email: this.authForm.value.email,
+      password: this.authForm.value.password,
+    });
   }
 }
