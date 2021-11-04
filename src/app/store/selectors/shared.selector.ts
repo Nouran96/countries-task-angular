@@ -7,7 +7,3 @@ export const selectSnackbar = createSelector(selectShared, (shared) => ({
   openSnackbar: shared.openSnackbar,
   message: shared.message,
 }));
-
-export const selectLoader = createSelector(selectShared, (shared) => ({
-  showLoader: shared.showLoader,
-}));

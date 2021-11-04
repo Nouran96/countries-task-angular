@@ -1,11 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
 import { SharedState } from 'src/app/models/shared.model';
-import { toggleLoader, toggleSnackbar } from '../../actions/shared.actions';
+import { toggleSnackbar } from '../../actions/shared.actions';
 
 export const initialState: SharedState = {
   openSnackbar: false,
   message: '',
-  showLoader: false,
 };
 
 export const sharedReducer = createReducer(
@@ -14,9 +13,5 @@ export const sharedReducer = createReducer(
     ...state,
     openSnackbar: open,
     message,
-  })),
-  on(toggleLoader, (state, { showLoader }) => ({
-    ...state,
-    showLoader,
   }))
 );

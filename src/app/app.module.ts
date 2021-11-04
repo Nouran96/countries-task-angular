@@ -8,6 +8,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
@@ -21,6 +23,9 @@ import { AppBarComponent } from './components/app-bar/app-bar.component';
 import { RegisterComponent } from './containers/register/register.component';
 import { LoginComponent } from './containers/login/login.component';
 import { HomeComponent } from './containers/home/home.component';
+import { httpInterceptorProviders } from './interceptors';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { SpinnerInOverlayComponent } from './components/spinner-in-overlay/spinner-in-overlay.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +36,8 @@ import { HomeComponent } from './containers/home/home.component';
     SnackbarComponent,
     AppBarComponent,
     HomeComponent,
+    SpinnerComponent,
+    SpinnerInOverlayComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,13 +50,15 @@ import { HomeComponent } from './containers/home/home.component';
     MatButtonModule,
     MatSnackBarModule,
     MatToolbarModule,
+    MatProgressSpinnerModule,
+    MatDialogModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
     }),
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

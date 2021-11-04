@@ -13,4 +13,14 @@ body {
   * {
     box-sizing: border-box;
   }
+
+  .custom-spinner-dialog .mat-dialog-container {
+    box-shadow: none;
+    background: transparent;
+
+    .mat-progress-spinner circle,
+    .mat-spinner circle {
+      stroke: #222;
+    }
+  }
 }
