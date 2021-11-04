@@ -14,6 +14,11 @@ body {
     box-sizing: border-box;
   }
 
+  .content {
+    width: 90%;
+    margin: auto;
+  }
+
   .custom-spinner-dialog .mat-dialog-container {
     box-shadow: none;
     background: transparent;

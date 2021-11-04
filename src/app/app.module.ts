@@ -11,6 +11,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,6 +27,8 @@ import { HomeComponent } from './containers/home/home.component';
 import { httpInterceptorProviders } from './interceptors';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SpinnerInOverlayComponent } from './components/spinner-in-overlay/spinner-in-overlay.component';
+import { CountryCardComponent } from './components/country-card/country-card.component';
+import { AngularMaterialModule } from './modules/angular-material.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,7 @@ import { SpinnerInOverlayComponent } from './components/spinner-in-overlay/spinn
     HomeComponent,
     SpinnerComponent,
     SpinnerInOverlayComponent,
+    CountryCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,13 +49,7 @@ import { SpinnerInOverlayComponent } from './components/spinner-in-overlay/spinn
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSnackBarModule,
-    MatToolbarModule,
-    MatProgressSpinnerModule,
-    MatDialogModule,
+    AngularMaterialModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

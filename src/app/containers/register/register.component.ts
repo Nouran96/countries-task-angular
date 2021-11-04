@@ -22,10 +22,6 @@ export class RegisterComponent implements OnInit {
     this.authService.registerUser(data).subscribe((data) => {
       if (!data.error) {
         this.router.navigate(['/login']);
-      } else {
-        this.store.dispatch(
-          toggleSnackbar({ open: true, message: data.message })
-        );
       }
     });
   }

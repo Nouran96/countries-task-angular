@@ -1,0 +1,17 @@
+.card {
+  cursor: pointer;
+
+  .cardContent {
+    margin-top: 1rem;
+
+    .countryInfo {
+      display: flex;
+      gap: 0.5rem;
+
+      .title {
+        font-weight: bold;
+        color: #ff4081;
+      }
+    }
+  }
+}

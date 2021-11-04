@@ -12,20 +12,10 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   registerUser(payload: AuthData): Observable<any> {
-    return this.http
-      .post(`${environment.apiUrl}/cognito-register`, payload)
-      .pipe(
-        catchError((error) => {
-          return of({ error: true, message: error.error.message });
-        })
-      );
+    return this.http.post(`${environment.apiUrl}/cognito-register`, payload);
   }
 
   loginUser(payload: AuthData): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/cognito-login`, payload).pipe(
-      catchError((error) => {
-        return of({ error: true, message: error.error.message });
-      })
-    );
+    return this.http.post(`${environment.apiUrl}/cognito-login`, payload);
   }
 }

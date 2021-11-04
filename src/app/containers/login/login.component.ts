@@ -23,10 +23,6 @@ export class LoginComponent implements OnInit {
       if (!data.error) {
         this.store.dispatch(loginDataRecieve(data.data));
         this.router.navigateByUrl('/');
-      } else {
-        this.store.dispatch(
-          toggleSnackbar({ open: true, message: data.message })
-        );
       }
     });
   }
