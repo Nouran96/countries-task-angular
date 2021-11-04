@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Country } from 'src/app/models/country.model';
+import { CountriesService } from 'src/app/services/countries.service';
 
 @Component({
   selector: 'app-country-form',
@@ -11,21 +13,40 @@ export class CountryFormComponent implements OnInit {
   @Input() title: string;
   @Output() formSubmitted = new EventEmitter<Country>();
 
+  countryName: string = '';
   countryForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private countriesService: CountriesService
+  ) {
+    this.countryName = this.route.snapshot.params['country'];
+  }
 
   ngOnInit(): void {
     const numberRegex = '^[0-9]*$';
 
     this.countryForm = this.fb.group({
-      name: ['', [Validators.required]],
+      name: [
+        {
+          value: '',
+          ...(this.countryName ? { disabled: true } : { disabled: false }),
+        },
+        [Validators.required],
+      ],
       population: ['', [Validators.required, Validators.pattern(numberRegex)]],
       numberOfStates: [
         '',
         [Validators.required, Validators.pattern(numberRegex)],
       ],
     });
+
+    if (this.countryName) {
+      this.countriesService
+        .getCountry(this.countryName)
+        .subscribe((data) => this.countryForm.patchValue(data.data));
+    }
   }
 
   get countryFormControls() {
@@ -42,7 +63,7 @@ export class CountryFormComponent implements OnInit {
 
   handleSubmit(): void {
     this.formSubmitted.emit({
-      ...this.countryForm.value,
+      ...this.countryForm.getRawValue(),
       population: parseInt(this.countryForm.value.population),
       numberOfStates: parseInt(this.countryForm.value.numberOfStates),
     });

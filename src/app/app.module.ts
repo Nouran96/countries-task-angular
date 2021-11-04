@@ -32,6 +32,7 @@ import { AngularMaterialModule } from './modules/angular-material.module';
 import { CountryDetailsComponent } from './containers/country-details/country-details.component';
 import { CountryFormComponent } from './components/country-form/country-form.component';
 import { CreateCountryComponent } from './containers/create-country/create-country.component';
+import { EditCountryComponent } from './containers/edit-country/edit-country.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { CreateCountryComponent } from './containers/create-country/create-count
     CountryDetailsComponent,
     CountryFormComponent,
     CreateCountryComponent,
+    EditCountryComponent,
   ],
   imports: [
     BrowserModule,

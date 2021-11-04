@@ -13,6 +13,13 @@
   </mat-card-content>
 
   <mat-card-actions align="end">
-    <button class="blackBtn" mat-raised-button color="accent">Edit</button>
+    <button
+      class="blackBtn"
+      mat-raised-button
+      color="accent"
+      routerLink="/edit/{{ country.name }}"
+    >
+      Edit
+    </button>
   </mat-card-actions>
 </mat-card>

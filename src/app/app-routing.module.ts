@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CountryDetailsComponent } from './containers/country-details/country-details.component';
 import { CreateCountryComponent } from './containers/create-country/create-country.component';
+import { EditCountryComponent } from './containers/edit-country/edit-country.component';
 import { HomeComponent } from './containers/home/home.component';
 import { LoginComponent } from './containers/login/login.component';
 import { RegisterComponent } from './containers/register/register.component';
@@ -32,6 +33,11 @@ const routes: Routes = [
   {
     path: 'details/:country',
     component: CountryDetailsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'edit/:country',
+    component: EditCountryComponent,
     canActivate: [AuthGuard],
   },
   {
