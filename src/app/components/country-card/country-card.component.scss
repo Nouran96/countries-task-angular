@@ -1,11 +1,17 @@
 .card {
+  &.multiple {
+    width: calc(100% / 3);
+    min-width: 300px;
+  }
+
   .cardContent {
     margin-top: 1rem;
     margin-bottom: 0.5rem;
 
     .countryInfo {
       display: flex;
-      gap: 0.5rem;
+      flex-wrap: wrap;
+      gap: 0 0.5rem;
 
       .title {
         font-weight: bold;

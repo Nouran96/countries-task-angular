@@ -1,0 +1,72 @@
+<div class="formContainer">
+  <form class="form" [formGroup]="countryForm" (ngSubmit)="handleSubmit()">
+    <h2>{{ title }}</h2>
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+
+      <mat-hint
+        class="error"
+        *ngIf="
+          isFieldInvalid('name') && countryFormControls.name.errors?.required
+        "
+        >Required</mat-hint
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Population</mat-label>
+      <input matInput formControlName="population" />
+
+      <mat-hint
+        class="error"
+        *ngIf="
+          isFieldInvalid('population') &&
+          countryFormControls.population.errors?.required
+        "
+        >Required</mat-hint
+      >
+
+      <mat-hint
+        class="error"
+        *ngIf="
+          isFieldInvalid('population') &&
+          countryFormControls.population.errors?.pattern
+        "
+        >Should be only numbers</mat-hint
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Number of States</mat-label>
+      <input matInput formControlName="numberOfStates" />
+
+      <mat-hint
+        class="error"
+        *ngIf="
+          isFieldInvalid('numberOfStates') &&
+          countryFormControls.numberOfStates.errors?.required
+        "
+        >Required</mat-hint
+      >
+
+      <mat-hint
+        class="error"
+        *ngIf="
+          isFieldInvalid('numberOfStates') &&
+          countryFormControls.numberOfStates.errors?.pattern
+        "
+        >Should be only numbers</mat-hint
+      >
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="accent"
+      [disabled]="!countryForm.valid"
+      type="submit"
+    >
+      <span>Submit</span>
+    </button>
+  </form>
+</div>

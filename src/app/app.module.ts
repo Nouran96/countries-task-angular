@@ -30,6 +30,8 @@ import { SpinnerInOverlayComponent } from './components/spinner-in-overlay/spinn
 import { CountryCardComponent } from './components/country-card/country-card.component';
 import { AngularMaterialModule } from './modules/angular-material.module';
 import { CountryDetailsComponent } from './containers/country-details/country-details.component';
+import { CountryFormComponent } from './components/country-form/country-form.component';
+import { CreateCountryComponent } from './containers/create-country/create-country.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { CountryDetailsComponent } from './containers/country-details/country-de
     SpinnerInOverlayComponent,
     CountryCardComponent,
     CountryDetailsComponent,
+    CountryFormComponent,
+    CreateCountryComponent,
   ],
   imports: [
     BrowserModule,

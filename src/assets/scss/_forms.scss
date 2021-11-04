@@ -1,0 +1,49 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+    padding: 2rem;
+    max-width: 400px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    .error {
+      color: rgba(240, 33, 33, 0.692);
+    }
+
+    mat-form-field {
+      margin-bottom: 0.5rem;
+    }
+
+    button {
+      margin-bottom: 1rem;
+    }
+
+    a.redirectLink {
+      font-size: 0.7rem;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    > * {
+      width: 70%;
+      margin: auto;
+
+      @media screen and (max-width: 420px) {
+        width: 100%;
+      }
+    }
+  }
+}

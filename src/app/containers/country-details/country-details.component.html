@@ -1,3 +1,1 @@
-<div class="content">
-  <app-country-card [country]="country"></app-country-card>
-</div>
+<app-country-card *ngIf="country" [country]="country"></app-country-card>

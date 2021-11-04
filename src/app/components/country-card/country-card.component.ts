@@ -13,4 +13,11 @@ export class CountryCardComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  getCardClasses(): Object {
+    return {
+      card: true,
+      ...(this.type === 'list' ? { multiple: true, pointer: true } : {}),
+    };
+  }
 }

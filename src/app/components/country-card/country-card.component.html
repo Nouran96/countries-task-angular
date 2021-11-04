@@ -1,4 +1,4 @@
-<mat-card class="card" [style.cursor]="type === 'list' ? 'pointer' : 'normal'">
+<mat-card [class]="getCardClasses()">
   <mat-card-title>{{ country.name }}</mat-card-title>
   <mat-card-content class="cardContent">
     <div class="countryInfo">
