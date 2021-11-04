@@ -2,8 +2,10 @@
   <h1>Countries</h1>
   <div class="countriesList">
     <app-country-card
+      routerLink="/{{ country.name }}"
       *ngFor="let country of countries"
       [country]="country"
+      type="list"
     ></app-country-card>
   </div>
 </div>

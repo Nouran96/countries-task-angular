@@ -6,5 +6,4 @@ export interface Country {
 
 export interface CountryData {
   countries: Array<Country>;
-  selectedCountry: Country | {};
 }

@@ -8,6 +8,7 @@ import { Country } from 'src/app/models/country.model';
 })
 export class CountryCardComponent implements OnInit {
   @Input() country: Country;
+  @Input() type: 'list' | '';
 
   constructor() {}
 

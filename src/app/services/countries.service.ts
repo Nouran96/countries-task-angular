@@ -15,6 +15,10 @@ export class CountriesService {
     return this.http.get(`${environment.apiUrl}/country`);
   }
 
+  getCountry(name: string): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/country/${name}`);
+  }
+
   editCountry(data: Country): Observable<any> {
     // Copy all keys except for name key
     let { name, ...payload } = data;

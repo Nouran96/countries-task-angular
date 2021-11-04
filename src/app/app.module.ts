@@ -29,6 +29,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SpinnerInOverlayComponent } from './components/spinner-in-overlay/spinner-in-overlay.component';
 import { CountryCardComponent } from './components/country-card/country-card.component';
 import { AngularMaterialModule } from './modules/angular-material.module';
+import { CountryDetailsComponent } from './containers/country-details/country-details.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { AngularMaterialModule } from './modules/angular-material.module';
     SpinnerComponent,
     SpinnerInOverlayComponent,
     CountryCardComponent,
+    CountryDetailsComponent,
   ],
   imports: [
     BrowserModule,

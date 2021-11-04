@@ -28,6 +28,10 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           this.router.navigateByUrl('/login');
         }
 
+        if (error && error.status === 404) {
+          this.router.navigateByUrl('/');
+        }
+
         this.store.dispatch(
           toggleSnackbar({ open: true, message: error.error.message })
         );

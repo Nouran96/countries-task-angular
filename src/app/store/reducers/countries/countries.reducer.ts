@@ -1,11 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
 import { CountryData } from 'src/app/models/country.model';
-import {
-  allCountriesRecieve,
-  getCountryDetails,
-} from '../../actions/countries.actions';
+import { allCountriesRecieve } from '../../actions/countries.actions';
 
-export const initialState: CountryData = { countries: [], selectedCountry: {} };
+export const initialState: CountryData = { countries: [] };
 
 export const countriesReducer = createReducer(
   initialState,
@@ -13,13 +10,6 @@ export const countriesReducer = createReducer(
     return {
       ...state,
       countries,
-    };
-  }),
-  on(getCountryDetails, (state, { name }) => {
-    return {
-      ...state,
-      selectedCountry:
-        state.countries.find((country) => country.name === name) || {},
     };
   })
 );

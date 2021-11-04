@@ -1,4 +1,4 @@
-<mat-card class="card">
+<mat-card class="card" [style.cursor]="type === 'list' ? 'pointer' : 'normal'">
   <mat-card-title>{{ country.name }}</mat-card-title>
   <mat-card-content class="cardContent">
     <div class="countryInfo">
@@ -11,4 +11,8 @@
       <span>{{ country.numberOfStates }}</span>
     </div>
   </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button class="blackBtn" mat-raised-button color="accent">Edit</button>
+  </mat-card-actions>
 </mat-card>

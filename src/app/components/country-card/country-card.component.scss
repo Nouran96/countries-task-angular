@@ -1,8 +1,7 @@
 .card {
-  cursor: pointer;
-
   .cardContent {
     margin-top: 1rem;
+    margin-bottom: 0.5rem;
 
     .countryInfo {
       display: flex;
@@ -13,5 +12,9 @@
         color: #ff4081;
       }
     }
+  }
+
+  .blackBtn {
+    background-color: #222;
   }
 }

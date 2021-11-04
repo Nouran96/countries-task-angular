@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CountryDetailsComponent } from './containers/country-details/country-details.component';
 import { HomeComponent } from './containers/home/home.component';
 import { LoginComponent } from './containers/login/login.component';
 import { RegisterComponent } from './containers/register/register.component';
@@ -21,6 +22,11 @@ const routes: Routes = [
     path: 'register',
     component: RegisterComponent,
     canActivate: [NotAuthGuard],
+  },
+  {
+    path: ':country',
+    component: CountryDetailsComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: '**',
