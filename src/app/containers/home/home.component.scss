@@ -4,3 +4,27 @@
   justify-content: center;
   gap: 1rem;
 }
+
+.countriesContainer {
+  overflow-x: auto;
+  padding: 0 1rem;
+
+  .countriesTable {
+    width: 100%;
+    overflow-x: auto;
+    min-width: 650px;
+    margin-bottom: 1rem;
+
+    .blackBtn {
+      background-color: #222;
+    }
+
+    .mat-column-actions {
+      text-align: center;
+    }
+  }
+
+  .mat-paginator-container {
+    justify-content: center;
+  }
+}
