@@ -1,8 +1,8 @@
 <h1>Countries</h1>
-<div *ngIf="countries.length" class="countriesContainer">
+<div *ngIf="dataSource" class="countriesContainer">
   <table
     mat-table
-    [dataSource]="paginatedCountries"
+    [dataSource]="dataSource"
     class="mat-elevation-z8 countriesTable"
   >
     <mat-text-column headerText="Name" name="name"></mat-text-column>
@@ -41,9 +41,6 @@
   <mat-paginator
     hidePageSize
     pageSize="10"
-    [pageIndex]="pageIndex"
-    [length]="countries.length"
-    (page)="onPageChange($event)"
     aria-label="Select page of periodic elements"
   >
   </mat-paginator>

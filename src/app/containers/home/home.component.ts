@@ -2,24 +2,26 @@ import {
   Component,
   OnInit,
   SimpleChanges,
+  ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Country } from 'src/app/models/country.model';
 import { CountriesService } from 'src/app/services/countries.service';
 import { allCountriesRecieve } from 'src/app/store/actions/countries.actions';
-import { PageEvent } from '@angular/material/paginator';
-
-const NUM_OF_RECORDS = 10;
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  // To access library classes and override them
   encapsulation: ViewEncapsulation.None,
 })
 export class HomeComponent implements OnInit {
-  countries: Array<Country>;
-  paginatedCountries: Array<Country>;
+  dataSource: MatTableDataSource<Country>;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   displayedColumns: Array<string> = [
     'name',
@@ -27,8 +29,6 @@ export class HomeComponent implements OnInit {
     'numberOfStates',
     'actions',
   ];
-
-  pageIndex: number = 0;
 
   constructor(
     private countriesService: CountriesService,
@@ -38,22 +38,13 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.countriesService.getAllCountries().subscribe((data) => {
       if (!data.error) {
-        this.store.dispatch(allCountriesRecieve({ countries: data.data }));
-        this.countries = data.data;
-        this.paginatedCountries = this.countries.slice(
-          this.pageIndex * NUM_OF_RECORDS,
-          (this.pageIndex + 1) * NUM_OF_RECORDS
-        );
+        // this.store.dispatch(allCountriesRecieve({ countries: data.data }));
+        this.dataSource = new MatTableDataSource<Country>(data.data);
       }
     });
   }
 
-  onPageChange(page: PageEvent) {
-    this.pageIndex = page.pageIndex;
-
-    this.paginatedCountries = this.countries.slice(
-      page.pageIndex * page.pageSize,
-      (page.pageIndex + 1) * page.pageSize
-    );
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
   }
 }
