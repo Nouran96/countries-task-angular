@@ -8,6 +8,12 @@
 .countriesContainer {
   overflow-x: auto;
   padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+
+  .filterField {
+    align-self: flex-end;
+  }
 
   .countriesTable {
     width: 100%;
@@ -20,6 +26,10 @@
     }
 
     .mat-column-actions {
+      text-align: center;
+    }
+
+    .noDataCell {
       text-align: center;
     }
   }

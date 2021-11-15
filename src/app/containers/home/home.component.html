@@ -1,5 +1,10 @@
 <h1>Countries</h1>
-<div *ngIf="dataSource?.filteredData?.length" class="countriesContainer">
+<div *ngIf="fetchedData" class="countriesContainer">
+  <mat-form-field appearance="outline" class="filterField">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" #input />
+  </mat-form-field>
+
   <table
     mat-table
     matSort
@@ -45,6 +50,10 @@
       routerLink="/details/{{ row.name }}"
       *matRowDef="let row; columns: displayedColumns"
     ></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell noDataCell" colspan="4">No data found</td>
+    </tr>
   </table>
 
   <mat-paginator

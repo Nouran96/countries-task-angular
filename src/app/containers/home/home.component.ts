@@ -15,7 +15,8 @@ import { MatSort, Sort } from '@angular/material/sort';
   encapsulation: ViewEncapsulation.None,
 })
 export class HomeComponent implements OnInit {
-  dataSource: MatTableDataSource<Country>;
+  dataSource: MatTableDataSource<Country> = new MatTableDataSource<Country>();
+  fetchedData: boolean = false;
 
   // This should be added because of using ngIf in html template, ngAfterViewInit can't access table
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -51,9 +52,21 @@ export class HomeComponent implements OnInit {
     this.countriesService.getAllCountries().subscribe((data) => {
       if (!data.error) {
         // this.store.dispatch(allCountriesRecieve({ countries: data.data }));
-        this.dataSource = new MatTableDataSource<Country>(data.data);
+        this.dataSource.data = data.data;
+        this.fetchedData = true;
       }
     });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+
+    // Override default filter behaviour to only filter name field
+    this.dataSource.filterPredicate = (data: Country, filter: string) => {
+      return data.name.toLowerCase().includes(filter);
+    };
+
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   // ngAfterViewInit() {
