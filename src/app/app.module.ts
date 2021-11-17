@@ -33,6 +33,7 @@ import { CountryDetailsComponent } from './containers/country-details/country-de
 import { CountryFormComponent } from './components/country-form/country-form.component';
 import { CreateCountryComponent } from './containers/create-country/create-country.component';
 import { EditCountryComponent } from './containers/edit-country/edit-country.component';
+import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { EditCountryComponent } from './containers/edit-country/edit-country.com
     CountryFormComponent,
     CreateCountryComponent,
     EditCountryComponent,
+    AuthLayoutComponent,
   ],
   imports: [
     BrowserModule,

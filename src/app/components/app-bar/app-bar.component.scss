@@ -1,3 +1,5 @@
+@import "../../../assets/scss/variables";
+
 .toolbar {
   background-color: #222;
   color: #fff;
@@ -15,7 +17,7 @@
     cursor: pointer;
 
     &:hover {
-      color: #ff4081;
+      color: $mainColor;
     }
   }
 

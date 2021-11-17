@@ -1,5 +1,8 @@
 <div class="formContainer">
   <form class="form" [formGroup]="authForm" (ngSubmit)="handleSubmit()">
+    <div class="logo">
+      <img src="../../../assets/imgs/logo.png" />
+    </div>
     <h2>{{ title }}</h2>
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
@@ -70,18 +73,21 @@
 
     <button
       mat-raised-button
-      color="accent"
+      color="primary"
       [disabled]="!authForm.valid"
       type="submit"
     >
       <span>{{ title }} </span>
     </button>
 
-    <a *ngIf="type === 'register'" class="redirectLink" routerLink="/login"
-      >Already have an account? Login</a
-    >
-    <a *ngIf="type === 'login'" class="redirectLink" routerLink="/register"
-      >Don't have an account? Register</a
-    >
+    <div *ngIf="type === 'register'" class="redirectContainer">
+      <span>Already have an account?</span>
+      <a routerLink="/login">Login</a>
+    </div>
+
+    <div *ngIf="type === 'login'" class="redirectContainer">
+      <span>Don't have an account?</span>
+      <a routerLink="/register">Register</a>
+    </div>
   </form>
 </div>
