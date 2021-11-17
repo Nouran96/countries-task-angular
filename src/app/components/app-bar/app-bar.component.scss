@@ -1,8 +1,6 @@
 @import "../../../assets/scss/variables";
 
 .toolbar {
-  background-color: #222;
-  color: #fff;
   padding: 0.5rem 16px;
   height: auto;
   display: flex;
@@ -10,14 +8,28 @@
   gap: 0.5rem;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  box-shadow: 0px 0px 7px 0px #3e3b3b5e;
+  position: relative;
+  z-index: 3;
 
-  nav span {
-    font-size: 0.9rem;
+  .leftSide {
+    display: flex;
+    align-items: center;
     cursor: pointer;
 
-    &:hover {
+    .appName {
       color: $mainColor;
+    }
+
+    .logo {
+      display: flex;
+      margin-right: 0.5rem;
+
+      img {
+        width: 50px;
+        max-width: 100%;
+        height: 100%;
+      }
     }
   }
 
@@ -26,5 +38,42 @@
     align-items: center;
     justify-content: flex-end;
     gap: 0.5rem;
+
+    nav span {
+      font-size: 0.9rem;
+      cursor: pointer;
+      margin: 0 1em;
+
+      &:hover {
+        color: $secondaryColor;
+      }
+    }
+  }
+}
+
+.sidenavContainer {
+  min-height: calc(100% - 75px);
+
+  .sidenav {
+    background-color: whitesmoke;
+    box-shadow: none;
+    padding: 1rem 1.5rem;
+    z-index: 3;
+  }
+
+  nav span {
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin: 0;
+
+    &:hover {
+      color: $secondaryColor;
+    }
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem 0;
   }
 }

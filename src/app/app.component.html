@@ -1,11 +1,17 @@
-<!-- <ng-template #childTemplate> -->
-<!-- <div class="content"> -->
-<router-outlet></router-outlet>
-<!-- </div> -->
+<div *ngIf="showAuthLayout">
+  <ng-container *ngTemplateOutlet="template"></ng-container>
+</div>
+
+<app-app-bar *ngIf="!showAuthLayout">
+  <div class="content">
+    <ng-container *ngTemplateOutlet="template"></ng-container>
+  </div>
+</app-app-bar>
+
+<ng-template #template>
+  <router-outlet> </router-outlet>
+</ng-template>
 
 <app-snackbar></app-snackbar>
 
 <app-spinner-in-overlay></app-spinner-in-overlay>
-<!-- </ng-template> -->
-
-<!-- <app-app-bar [childTemplate]="childTemplate"></app-app-bar> -->

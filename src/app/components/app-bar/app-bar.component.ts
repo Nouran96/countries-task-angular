@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { logout } from 'src/app/store/actions/auth.actions';
@@ -10,9 +10,6 @@ import { selectAuth } from 'src/app/store/selectors/auth.selector';
   styleUrls: ['./app-bar.component.scss'],
 })
 export class AppBarComponent implements OnInit {
-  @Input()
-  childTemplate: TemplateRef<any>;
-
   token: string | null = '';
 
   constructor(private store: Store, private router: Router) {}

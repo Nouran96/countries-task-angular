@@ -1,37 +1,112 @@
-<ng-container [ngTemplateOutlet]="childTemplate">
-  <mat-toolbar class="toolbar">
-    <nav>
-      <span routerLink="/">Home</span>
-    </nav>
-
-    <div class="authState">
-      <button
-        *ngIf="!token"
-        mat-raised-button
-        color="accent"
-        routerLink="/login"
-      >
-        Login
-      </button>
-      <button
-        *ngIf="!token"
-        mat-raised-button
-        color="accent"
-        routerLink="/register"
-      >
-        Register
-      </button>
-      <button *ngIf="token" mat-raised-button color="accent" routerLink="/new">
-        Add Country
-      </button>
-      <button
-        *ngIf="token"
-        mat-raised-button
-        color="accent"
-        (click)="onLogout()"
-      >
-        Logout
-      </button>
+<mat-toolbar class="toolbar">
+  <div class="leftSide" routerLink="/">
+    <div class="logo">
+      <img src="../../../assets/imgs/logo.png" />
     </div>
-  </mat-toolbar>
-</ng-container>
+
+    <span class="appName">Countries App</span>
+  </div>
+
+  <div class="authState" fxShow="true" fxHide.lt-sm="true">
+    <ng-container *ngTemplateOutlet="navContent"></ng-container>
+  </div>
+
+  <div fxShow="true" fxHide.gt-xs="true">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenavContainer">
+  <mat-sidenav
+    class="sidenav"
+    #sidenav
+    mode="over"
+    [fixedInViewport]="true"
+    fixedTopGap="74"
+    (click)="sidenav.toggle()"
+  >
+    <mat-nav-list class="list">
+      <ng-container *ngTemplateOutlet="navContent"></ng-container>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="sidenavContent">
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<ng-template #navContent>
+  <nav>
+    <span routerLink="/">Home</span>
+  </nav>
+
+  <button *ngIf="!token" mat-raised-button color="primary" routerLink="/login">
+    Login
+  </button>
+  <button
+    *ngIf="!token"
+    mat-raised-button
+    color="primary"
+    routerLink="/register"
+  >
+    Register
+  </button>
+  <button *ngIf="token" mat-raised-button color="primary" routerLink="/new">
+    Add Country
+  </button>
+  <button *ngIf="token" mat-raised-button color="primary" (click)="onLogout()">
+    Logout
+  </button>
+</ng-template>
+
+<!-- <mat-sidenav-container
+  class="example-container"
+  fxShow="true"
+  fxHide.gt-xs="true"
+>
+  <mat-sidenav
+    flex
+    layout-fill
+    #sidenav
+    mode="over"
+    opened
+    [fixedInViewport]="false"
+    class="example-sidenav"
+  >
+    Fixed Sidenav
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <ng-container [ngTemplateOutlet]="toolbar"></ng-container>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->
+
+<!-- <ng-content></ng-content> -->
+<!-- <mat-drawer-container class="example-container" autosize>
+  <mat-drawer #sidenav class="example-sidenav" mode="side">
+    <p>Auto-resizing sidenav</p>
+  </mat-drawer>
+</mat-drawer-container> -->
+
+<!-- <ng-content></ng-content> -->
+
+<!-- <mat-sidenav-container
+  fxFlexFill
+  fxShow="true"
+  fxHide.gt-xs="true"
+  class="sidenav"
+>
+  <mat-sidenav #sidenav>
+    <mat-nav-list>
+      <a href="#" mat-list-item>Menu Item 1</a>
+      <a href="#" mat-list-item>Menu Item 2</a>
+      <a href="#" mat-list-item>Menu Item 3</a>
+      <a href="#" mat-list-item>Menu Item 4</a>
+      <a href="#" mat-list-item>Menu Item 5</a>
+      <a href="#" mat-list-item>Menu Item 6</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content fxFlexFill></mat-sidenav-content>
+</mat-sidenav-container> -->

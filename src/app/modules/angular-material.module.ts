@@ -11,6 +11,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 const modulesArray = [
   MatFormFieldModule,
@@ -24,6 +28,10 @@ const modulesArray = [
   MatTableModule,
   MatPaginatorModule,
   MatSortModule,
+  MatIconModule,
+  MatSidenavModule,
+  MatListModule,
+  FlexLayoutModule,
 ];
 
 @NgModule({
